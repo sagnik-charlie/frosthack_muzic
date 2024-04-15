@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webcam Stream</title>
+</head>
+<body>
+  <h1>Detecting Face, Age and Gender</h1>
+  <div>
+    <img src="/video" alt="Webcam Feed" width="640" height="480">
+  </div>
+  <div>
+  <form method="post" action="/generate"> 
+    <label for="text_prompt">Text:</label>
+    <input type="text" id="text_prompt" name="text_prompt" >  <br>
+    <button type="submit">Generate</button>
+  </form>
+  </div>
+  <div>
+    <h1>Audio Player</h1>
+  <audio controls>
+    <source src="./static/audio/generated.wav" type="audio/wav">
+  </audio>
+  </div>
+</body>
+</html>
