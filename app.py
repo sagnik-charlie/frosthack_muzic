@@ -10,7 +10,7 @@ import numpy as np
 import random
 from diffusers import AudioLDM2Pipeline
 
-global capture, rec_frame, grey, switch, neg, face, rec, out, emotion_str
+global capture, rec_frame, grey, switch, neg, face, rec, out, emotion_str, mp3_link
 capture=0
 emotion_str=""
 app = Flask(__name__,template_folder='templates')
@@ -116,23 +116,25 @@ def assign_label(dominant_color, color_range):
     return assigned_label
 
 def assign_prompt(color, is_bright, gender, mood, age):
-
+    text_adults=["from early 2000s","from late 90s","retro classic from early 90s"]
+    text_kids=["EDM music","for babies","for kids"]
+    text_oldies=["classic rock from early 80s","retro classic from early 70s"]
     if age>=0 and age<=2:
-        text = 'for small babies'
+        text = random.choice(text_kids)
     elif age>=3 and age<=7:
-        text = 'for babies'
+        text = random.choice(text_kids)
     elif age>=8 and age<=12:
-        text = 'for kids'
+        text = text_kids[0]
     elif age>=13 and age<=20:
-        text = "from early 2000s"
+        text = random.choice(text_adults)
     elif age>=21 and age<=32:
-        text = "from late 90s"
+        text = random.choice(text_adults)
     elif age>=33 and age<=45:
-        text = "retro classic from early 90s"
+        text = random.choice(text_adults)
     elif age>=46 and age<=55:
-        text = 'classic rock from early 80s'
+        text = random.choice(text_oldies)
     elif age>=56 and age<=90:
-        text = 'retro classic from early 70s'
+        text = random.choice(text_oldies)
     else:
         text = 'for all age group'
 
@@ -245,26 +247,22 @@ def video():
 
 @app.route('/generate', methods=['POST'])
 def generate_audio():
+  global mp3_link
   if request.method == 'POST':
     text_prompt = request.form['text_prompt']  # Access form data using 'name' attribute
-    
     # Process the form data (e.g., store in database, send email)
     mp3_link = get_mp3_file(text_prompt)
-    return render_template('index.html', audio=mp3_link,prompt=generate_prompt(random.choice(emotion_str)))
+    return render_template('index.html', audio=mp3_link,prompt="")
   else:
     return "Something went wrong!"  # Handle non-POST requests (optional)
     
 @app.route('/',methods=['POST'])
 def tasks():
-    global switch,camera, capture, emotion_str
+    global switch,camera, capture, emotion_str, mp3_link
     if request.method == 'POST':
         if request.form.get('click') == 'Capture':
             # global capture
             capture=1
-            #new_str = request.form.get('text_prompt')
-            #emotion_str=new_str
-            #redirect("/")
-           # return render_template('index.html',prompt=emotion_str)
             gen_frames()
             return render_template('index.html',audio=mp3_link,prompt=emotion_str)
 
@@ -298,10 +296,10 @@ def get_mp3_file(prompt):
   ).audios
 
 # save the best audio sample (index 0) as a .wav file
-  audio_file_path = os.path.join(os.path.dirname(__file__), 'static', 'audio', 'generated',cnt,'.wav')
+  audio_file_path = os.path.join(os.path.dirname(__file__), 'static', 'audio', '3.wav')
   os.makedirs(os.path.dirname(audio_file_path), exist_ok=True)
   scipy.io.wavfile.write(audio_file_path, rate=16000, data=audio[0])
-  return 'static/audio/generated.wav'
+  return audio_file_path
 
 
 
