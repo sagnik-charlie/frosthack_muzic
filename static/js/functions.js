@@ -72,14 +72,14 @@ Amplitude.init({
 			"name": "Generated Music",
 			"artist": "MUZIC MAESTEROS",
 			"album": "We Are to Answer",
-			"url": "http://127.0.0.1:5000/audio/audio1.wav",
+			"url": "./static/audio/3.wav",
 			"cover_art_url": "{{../album-art/we-are-to-answer.jpg}}"
 		},
 		{
 			"name": "The Gun",
 			"artist": "MUZIC MAESTEROS",
 			"album": "Ask The Dust",
-			"url": "{{ audio }}",
+			"url": "http://127.0.0.1:5000/audio/audio1.wav",
 			"cover_art_url": "../album-art/ask-the-dust.jpg"
 		},
 		{
@@ -93,7 +93,7 @@ Amplitude.init({
 			"name": "I Came Running",
 			"artist": "Ancient Astronauts",
 			"album": "We Are to Answer",
-			"url": "http://127.0.0.1:5000/audio/audio2.wav",
+			"url": "http://127.0.0.1:5000/audio/audio1.wav",
 			"cover_art_url": "../album-art/we-are-to-answer.jpg"
 		},
 		{
@@ -107,7 +107,7 @@ Amplitude.init({
 			"name": "Terrain",
 			"artist": "pg.lost",
 			"album": "Key",
-			"url": "http://127.0.0.1:5000/audio/audio2.wav",
+			"url": "http://127.0.0.1:5000/audio/audio1.wav",
 			"cover_art_url": "../album-art/key.jpg"
 		},
 		{
