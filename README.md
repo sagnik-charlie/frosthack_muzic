@@ -9,6 +9,19 @@
   <img src="assests/images/6.png" width="350">
 </p>
 
+# Steps to run the web app
+
+Step 1. Create a python environment and activate it in the main folder
+Step 2. Inside the python environment upgrade pip to 23.0.1 and exceute the below command 
+```
+pip install --upgrade pip==23.0.1
+pip install -r requirements.txt
+```
+Step 3. Run the web app using
+```
+python app.py
+```
+
 ## Muzic Maesters
 
 Generate Music that matches your vibe.
