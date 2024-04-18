@@ -11,7 +11,7 @@
 
 # Steps to run the web app
 
-Step 1. Create a python environment and activate it in the main folder\n
+Step 1. Create a python environment and activate it in the main folder <br />
 Step 2. Inside the python environment upgrade pip to 23.0.1 and exceute the below command 
 ```
 pip install --upgrade pip==23.0.1
