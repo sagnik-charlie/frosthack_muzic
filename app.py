@@ -203,8 +203,8 @@ def gen_frames():
          #emotion=max(results[0]['emotions'], key = results[0]['emotions'].get)
         cv2.putText(resultImg, f"{emotion}: {score}", (faceBox[0], faceBox[1]+50), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
         cv2.putText(resultImg, f'{gender}, {age}', (faceBox[0], faceBox[1]-10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0,255,255), 2, cv2.LINE_AA)
-        #if(gender is not None and emotion is not None and age is not None):
-        emotion_str=generate_prompt(frame,gender,emotion,int(age[1:3]))
+        if(gender is not None and emotion is not None and age is not None):
+         emotion_str=generate_prompt(frame,gender,emotion,int(age[1:3]))
 
     # Encode frame as JPEG for web streaming
     ret, buffer = cv2.imencode('.jpg', resultImg)
@@ -222,7 +222,6 @@ def gen_frames():
          
   cap.release()
   cv2.destroyAllWindows()
-  render_template('index.html',audio=mp3_link,prompt=str_prompt)
 
 @app.route('/')
 def index():
