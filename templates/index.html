@@ -10,42 +10,35 @@
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/app.css') }}"/>
 	</head>
 	<body>
-
-  <span class="song-title"><h1>MUZIC MAESTORS</h1></span>
-
-  <div class = "row">   
-
-    <div class = "column">
-      <div id="blue-playlist-container">
-          <div id="amplitude-player">
-          <div class="row">
+       <div class="row">
           <div class="column">
             <img src="/video" alt="Webcam Feed" width="640" height="480">
           </div>
+          <div class="column">
+            <form method="post" action="{{ url_for('tasks') }}">
 
+              <input type="submit" value="Capture" name="click"/>
+  
+            </form>
+          </div>
           <div class="column">
           <form method="post" action="/generate"> 
             <label for="text_prompt">Text:</label>
             <textarea class="textBoxInput textBoxBorder textRoundXxlarge" type="text" id="text_prompt" name="text_prompt">{{ prompt }}</textarea>  <br>
-            
-
              <button class="textButton" type="submit">Generate</button> 
             <!-- <button onclick="capture()">Capture</button> -->
             
           </form>
-          <form method="post" action="{{ url_for('tasks') }}">
-
-            <input type="submit" value="Capture" name="click"/>
-
-          </form>
+          
           
           </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          
+        
+      
+    
     
     <div class="column">
+      <span class="song-title"><h1>MUZIC MAESTORS</h1></span>
 
       <!-- Blue Playlist Container -->
       <div id="blue-playlist-container">
@@ -152,6 +145,7 @@
         </div>
         <!-- End Amplitdue Player -->
       </div>
+  </div>
   </div>
 		
 		<!--
